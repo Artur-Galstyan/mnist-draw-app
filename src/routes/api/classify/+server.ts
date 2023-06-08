@@ -1,12 +1,11 @@
 import type { RequestHandler } from '@sveltejs/kit';
-
+import { PUBLIC_BACKEND_API } from '$env/static/public';
 import { json } from '@sveltejs/kit';
 
 export const POST = (async ({ request, fetch }) => {
 	let jsonBody = await request.json();
-	console.log(jsonBody);
 
-	let req = await fetch('http://localhost:8888/', {
+	let req = await fetch(PUBLIC_BACKEND_API, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
